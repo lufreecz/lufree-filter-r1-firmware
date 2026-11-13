@@ -1,8 +1,8 @@
 {
-  "version": "0.7.0-beta.3",
-  "url": "https://github.com/lufreecz/lufree-filter-r1-firmware/releases/download/v0.7.0-beta.3/lufree-filter-r1-0.7.0-beta.3.bin",
-  "size": 1701440,
-  "sha256": "2409cc0452132902d4ecdbec20a5f290c5bb7b74ec71009f66bbaf7a1e959ab3",
-  "notes": "Clock like an analogue watch: the outer ring shows the hours (12 around the display), a thinner inner ring the minutes. Bigger superscript in µg/m³.",
+  "version": "0.7.0-beta.4",
+  "url": "https://github.com/lufreecz/lufree-filter-r1-firmware/releases/download/v0.7.0-beta.4/lufree-filter-r1-0.7.0-beta.4.bin",
+  "size": 1702000,
+  "sha256": "923d33b0f79ec3fcd66614687baf3a7b1d8e730d0ae326d9831b918f72d3809a",
+  "notes": "Bigger units placed lower, clock in the theme colours, and a \"Put display to sleep\" button.",
   "date": "2026-11-13"
 }
