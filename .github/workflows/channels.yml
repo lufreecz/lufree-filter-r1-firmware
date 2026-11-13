@@ -10,6 +10,9 @@ name: channels
 on:
   release:
     types: [published, released, prereleased, edited]
+  push:
+    branches: [main]
+    paths: [".github/workflows/**"]
   workflow_dispatch:
 
 permissions:
@@ -28,13 +31,10 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          mkdir -p channels tmp
-          gh release list --repo "$GITHUB_REPOSITORY" --limit 100 --json tagName,isPrerelease,isDraft > tmp/releases.json
-          for tag in $(jq -r '.[] | select(.isDraft|not) | .tagName' tmp/releases.json); do
-            gh release download "$tag" --repo "$GITHUB_REPOSITORY" -p manifest.json -O "tmp/$tag.json" || true
-          done
-          python3 .github/workflows/pick_channels.py tmp/releases.json tmp channels
-          rm -rf tmp
+          mkdir -p channels
+          gh api "repos/$GITHUB_REPOSITORY/releases?per_page=100" > releases.json
+          python3 .github/workflows/pick_channels.py releases.json channels
+          rm -f releases.json
       - name: Commit
         run: |
           git config user.name "release-bot"
