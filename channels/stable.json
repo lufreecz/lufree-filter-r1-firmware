@@ -1,8 +1,8 @@
 {
-  "version": "0.6.0-beta.1",
-  "url": "https://github.com/lufreecz/lufree-filter-r1-firmware/releases/download/v0.6.0-beta.1/lufree-filter-r1-0.6.0-beta.1.bin",
-  "size": 1595904,
-  "sha256": "f33dd5dfe99df5f59c0f78ddea92dcf10ebac92178c4766ea4c25cbb1df71f38",
-  "notes": "Filters replaced with an automatic measurement, unified display timeouts with a clock, time zones and optional MQTT for Home Assistant.",
+  "version": "0.5.0",
+  "url": "https://github.com/lufreecz/lufree-filter-r1-firmware/releases/download/v0.5.0/lufree-filter-r1-0.5.0.bin",
+  "size": 1570016,
+  "sha256": "6422bff58e99611a96c14565fd9777e4e461a32c4f0adaa5f0f1c93fd2cbc6fa",
+  "notes": "Online updates from GitHub: the filter checks for new versions once a day, shows them in Settings and installs them after confirmation. Optional beta channel. Only signed firmware images are accepted.",
   "date": "2026-11-13"
 }
