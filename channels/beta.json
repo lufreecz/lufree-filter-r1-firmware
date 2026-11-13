@@ -1,8 +1,8 @@
 {
-  "version": "0.6.0-beta.2",
-  "url": "https://github.com/lufreecz/lufree-filter-r1-firmware/releases/download/v0.6.0-beta.2/lufree-filter-r1-0.6.0-beta.2.bin",
-  "size": 1598112,
-  "sha256": "8296aa8b9ad0d944912abc466e7ca2cea10b3d1addd48ba3d2d1cd59e90faeb0",
-  "notes": "Way back from a beta: when a beta is installed, Settings offer \"Back to the tested version\". The date on the clock screen is grey like the day name.",
+  "version": "0.6.0-beta.3",
+  "url": "https://github.com/lufreecz/lufree-filter-r1-firmware/releases/download/v0.6.0-beta.3/lufree-filter-r1-0.6.0-beta.3.bin",
+  "size": 1597216,
+  "sha256": "6f0c6d4a1f1a1feca19999a5fb50c31925fb56d45016d3638279c0f85430c365",
+  "notes": "VOC index fix: after a restart of the filter (update, restart from the web) the SEN55 keeps measuring and keeps what it has learned about the background. The stored VOC state is no longer restored - it made the VOC index jump far too high after a restart.",
   "date": "2026-11-13"
 }
