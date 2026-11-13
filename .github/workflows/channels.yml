@@ -1,0 +1,45 @@
+# Keeps the update channels in sync with the releases of this repository.
+#
+#   channels/beta.json    newest published release (pre-release or release)
+#   channels/stable.json  newest release that is NOT a pre-release
+#
+# A new firmware arrives as a pre-release (beta). Marking it as a full release
+# ("Set as the latest release", untick "Set as a pre-release") makes it stable.
+name: channels
+
+on:
+  release:
+    types: [published, released, prereleased, edited]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: channels
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild channel files from all releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p channels tmp
+          gh release list --repo "$GITHUB_REPOSITORY" --limit 100 --json tagName,isPrerelease,isDraft > tmp/releases.json
+          for tag in $(jq -r '.[] | select(.isDraft|not) | .tagName' tmp/releases.json); do
+            gh release download "$tag" --repo "$GITHUB_REPOSITORY" -p manifest.json -O "tmp/$tag.json" || true
+          done
+          python3 .github/workflows/pick_channels.py tmp/releases.json tmp channels
+          rm -rf tmp
+      - name: Commit
+        run: |
+          git config user.name "release-bot"
+          git config user.email "release-bot@users.noreply.github.com"
+          git add channels
+          git diff --cached --quiet && { echo "channels unchanged"; exit 0; }
+          git commit -m "update channels"
+          git push
