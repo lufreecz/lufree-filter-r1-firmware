@@ -1,8 +1,8 @@
 {
-  "version": "0.5.0",
-  "url": "https://github.com/lufreecz/lufree-filter-r1-firmware/releases/download/v0.5.0/lufree-filter-r1-0.5.0.bin",
-  "size": 1570016,
-  "sha256": "6422bff58e99611a96c14565fd9777e4e461a32c4f0adaa5f0f1c93fd2cbc6fa",
-  "notes": "Online updates from GitHub: the filter checks for new versions once a day, shows them in Settings and installs them after confirmation. Optional beta channel. Only signed firmware images are accepted.",
+  "version": "0.7.0",
+  "url": "https://github.com/lufreecz/lufree-filter-r1-firmware/releases/download/v0.7.0/lufree-filter-r1-0.7.0.bin",
+  "size": 1701776,
+  "sha256": "d547ba55a4a6b6ef0c91ccfc58ab691f43ebe2123d56ff61ac1960f7ba1aba47",
+  "notes": "Online updates from GitHub, filter calibration, clock screen, MQTT for Home Assistant and display texts with Czech letters.",
   "date": "2026-11-13"
 }
