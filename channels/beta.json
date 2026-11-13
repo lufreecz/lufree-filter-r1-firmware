@@ -1,8 +1,8 @@
 {
-  "version": "0.7.0-beta.2",
-  "url": "https://github.com/lufreecz/lufree-filter-r1-firmware/releases/download/v0.7.0-beta.2/lufree-filter-r1-0.7.0-beta.2.bin",
-  "size": 1701216,
-  "sha256": "f0ec01bf099a7cf271c34f58be8f358e688defe311039961377ef8e8e16029ab",
-  "notes": "Fix: Czech letters and µg/m³ on the display were shown as vertical bars (the font characters were not sorted).",
+  "version": "0.7.0-beta.3",
+  "url": "https://github.com/lufreecz/lufree-filter-r1-firmware/releases/download/v0.7.0-beta.3/lufree-filter-r1-0.7.0-beta.3.bin",
+  "size": 1701440,
+  "sha256": "2409cc0452132902d4ecdbec20a5f290c5bb7b74ec71009f66bbaf7a1e959ab3",
+  "notes": "Clock like an analogue watch: the outer ring shows the hours (12 around the display), a thinner inner ring the minutes. Bigger superscript in µg/m³.",
   "date": "2026-11-13"
 }
