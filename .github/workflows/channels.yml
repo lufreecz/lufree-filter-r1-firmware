@@ -26,7 +26,10 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      # release events point at the release tag; the channel files live on main
+      - uses: actions/checkout@v5
+        with:
+          ref: main
       - name: Rebuild channel files from all releases
         env:
           GH_TOKEN: ${{ github.token }}
@@ -42,4 +45,4 @@ jobs:
           git add channels
           git diff --cached --quiet && { echo "channels unchanged"; exit 0; }
           git commit -m "update channels"
-          git push
+          git push origin HEAD:main
