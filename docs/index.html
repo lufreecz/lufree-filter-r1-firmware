@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>lufree filter R1 – firmware installer</title>
+<script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+<style>
+  :root { --bg:#f6f7f8; --card:#fff; --fg:#16181b; --mut:#5d646d; --line:#e2e5e9; --acc:#16a34a; --warn:#b45309; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#111315; --card:#1a1d20; --fg:#eceef0; --mut:#9aa1a9; --line:#2b3035; --acc:#22c55e; --warn:#f59e0b; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  main { max-width:720px; margin:0 auto; padding:32px 20px 48px; }
+  header { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; }
+  h1 { font-size:26px; margin:0 0 4px; letter-spacing:-.01em; }
+  .sub { color:var(--mut); margin:0; }
+  .lang { display:flex; gap:4px; }
+  .lang button { border:1px solid var(--line); background:var(--card); color:var(--fg); border-radius:8px; padding:4px 10px; cursor:pointer; font:inherit; font-size:14px; }
+  .lang button[aria-pressed=true] { border-color:var(--acc); color:var(--acc); font-weight:600; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:22px; margin-top:20px; }
+  .install { text-align:center; }
+  .install .ver { color:var(--mut); font-size:14px; margin-top:10px; }
+  esp-web-install-button button { background:var(--acc); color:#fff; border:0; border-radius:10px; padding:14px 34px; font:inherit; font-size:18px; font-weight:600; cursor:pointer; }
+  esp-web-install-button button:hover { filter:brightness(1.08); }
+  .msg { color:var(--warn); font-weight:600; }
+  h2 { font-size:17px; margin:0 0 10px; }
+  ol, ul { margin:0; padding-left:22px; }
+  li { margin:6px 0; }
+  code { background:var(--bg); border:1px solid var(--line); border-radius:6px; padding:1px 6px; font-size:14px; }
+  pre { background:var(--bg); border:1px solid var(--line); border-radius:8px; padding:10px 12px; overflow-x:auto; font-size:13px; }
+  a { color:var(--acc); }
+  .mut { color:var(--mut); font-size:14px; }
+  [data-l] { display:none; }
+  html[lang=en] [data-l=en], html[lang=cs] [data-l=cs] { display:revert; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div>
+      <h1>lufree filter R1</h1>
+      <p class="sub"><span data-l="en">Firmware installer for the smart variant (ESP32-C3 SuperMini)</span><span data-l="cs">Instalace firmwaru pro chytrou variantu (ESP32-C3 SuperMini)</span></p>
+    </div>
+    <div class="lang"><button id="b-en" onclick="setLang('en')">EN</button><button id="b-cs" onclick="setLang('cs')">CZ</button></div>
+  </header>
+
+  <div class="card install">
+    <esp-web-install-button manifest="manifest.json">
+      <button slot="activate"><span data-l="en">Install firmware</span><span data-l="cs">Nainstalovat firmware</span></button>
+      <p slot="unsupported" class="msg"><span data-l="en">This browser cannot install firmware. Use Chrome or Edge on a desktop computer.</span><span data-l="cs">Tento prohlížeč neumí firmware nainstalovat. Použij Chrome nebo Edge na počítači.</span></p>
+      <p slot="not-allowed" class="msg"><span data-l="en">The page must be opened over HTTPS.</span><span data-l="cs">Stránka musí být otevřená přes HTTPS.</span></p>
+    </esp-web-install-button>
+    <div class="ver" id="ver"></div>
+  </div>
+
+  <div class="card">
+    <h2><span data-l="en">How to install</span><span data-l="cs">Postup</span></h2>
+    <ol data-l="en">
+      <li><b>Install before assembly</b> – after the electronics are closed in the fan module, the USB port is no longer reachable.</li>
+      <li>Connect the ESP32-C3 SuperMini to the computer with a USB-C <b>data</b> cable.</li>
+      <li>Open this page in <b>Chrome or Edge</b> on a desktop computer (Windows, macOS, Linux). Phones, Safari and Firefox are not supported.</li>
+      <li>Click <b>Install firmware</b>, choose the port (usually “USB JTAG/serial debug unit”) and confirm. Tick <b>Erase device</b> on the first installation. It takes about a minute.</li>
+      <li>If the board does not appear in the list: unplug it, hold the <b>BOOT</b> button, plug it in, release the button and try again. After the installation unplug and plug the board back in.</li>
+    </ol>
+    <ol data-l="cs">
+      <li><b>Instaluj před sestavením</b> – po uzavření elektroniky do bloku s ventilátory už USB port není přístupný.</li>
+      <li>Připoj ESP32-C3 SuperMini k počítači <b>datovým</b> kabelem USB-C.</li>
+      <li>Otevři tuto stránku v <b>Chrome nebo Edge</b> na počítači (Windows, macOS, Linux). Telefony, Safari a Firefox nejsou podporované.</li>
+      <li>Klikni na <b>Nainstalovat firmware</b>, vyber port (obvykle „USB JTAG/serial debug unit“) a potvrď. Při první instalaci zaškrtni <b>Erase device</b>. Trvá to asi minutu.</li>
+      <li>Pokud se deska v seznamu neobjeví: odpoj ji, podrž tlačítko <b>BOOT</b>, připoj ji, tlačítko pusť a zkus to znovu. Po instalaci desku odpoj a znovu připoj.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2><span data-l="en">After the installation</span><span data-l="cs">Po instalaci</span></h2>
+    <ul data-l="en">
+      <li>The filter starts its setup Wi-Fi <code>lufree-filter-XXXX</code>, password <code>lufree1234</code> (also shown as a QR code on the display).</li>
+      <li>Connect to it, open <code>http://192.168.4.1</code> and enter your home Wi-Fi. Then enter the access code of your R1 in <b>Settings</b>.</li>
+      <li>In your home network the filter is at <code>http://lufree-filter.local</code> (or its IP address shown on the display).</li>
+      <li>New versions arrive online: <b>Settings → Firmware update</b>. This page is needed only for the first installation.</li>
+      <li>Power the ESP from the filter’s 12 V supply through the step-down – fans and ESP must share one ground point, otherwise the fan speed reading does not work.</li>
+    </ul>
+    <ul data-l="cs">
+      <li>Filtr spustí nastavovací Wi-Fi <code>lufree-filter-XXXX</code>, heslo <code>lufree1234</code> (na displeji je i QR kód).</li>
+      <li>Připoj se k ní, otevři <code>http://192.168.4.1</code> a zadej domácí Wi-Fi. Pak v <b>Nastavení</b> zadej přístupový kód svého R1.</li>
+      <li>V domácí síti je filtr na <code>http://lufree-filter.local</code> (nebo na IP adrese z displeje).</li>
+      <li>Nové verze přicházejí online: <b>Nastavení → Aktualizace firmwaru</b>. Tato stránka je potřeba jen pro první instalaci.</li>
+      <li>ESP napájej z 12V zdroje filtru přes step-down – ventilátory a ESP musí mít společný zemnicí bod, jinak nefunguje měření otáček.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2><span data-l="en">Advanced: install with esptool</span><span data-l="cs">Pro pokročilé: instalace přes esptool</span></h2>
+    <p class="mut"><span data-l="en">Full image (bootloader, partitions and application) for offset 0x0:</span><span data-l="cs">Kompletní obraz (zavaděč, oddíly a aplikace) pro adresu 0x0:</span> <a href="firmware/lufree-filter-r1-full.bin" download>lufree-filter-r1-full.bin</a></p>
+    <pre>esptool.py --chip esp32c3 write_flash 0x0 lufree-filter-r1-full.bin</pre>
+    <p class="mut"><span data-l="en">Signed update images and release notes:</span><span data-l="cs">Podepsané aktualizace a poznámky k verzím:</span> <a href="https://github.com/lufreecz/lufree-filter-r1-firmware/releases">GitHub Releases</a></p>
+  </div>
+</main>
+<script>
+  function setLang(l) {
+    document.documentElement.lang = l;
+    document.getElementById('b-en').setAttribute('aria-pressed', l === 'en');
+    document.getElementById('b-cs').setAttribute('aria-pressed', l === 'cs');
+    try { localStorage.setItem('lang', l); } catch (e) {}
+  }
+  var saved = null;
+  try { saved = localStorage.getItem('lang'); } catch (e) {}
+  setLang(saved || ((navigator.language || '').toLowerCase().startsWith('cs') ? 'cs' : 'en'));
+  fetch('manifest.json', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (m) {
+    document.getElementById('ver').innerHTML =
+      '<span data-l="en">Version</span><span data-l="cs">Verze</span> ' + m.version;
+  }).catch(function () {});
+</script>
+</body>
+</html>
