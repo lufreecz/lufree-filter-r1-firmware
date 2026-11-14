@@ -2,6 +2,7 @@
   "name": "lufree filter R1",
   "version": "0.8.0",
   "new_install_prompt_erase": true,
+  "lufree_image": 2,
   "builds": [
     { "chipFamily": "ESP32-C3", "parts": [ { "path": "firmware/lufree-filter-r1-full.bin", "offset": 0 } ] }
   ]
