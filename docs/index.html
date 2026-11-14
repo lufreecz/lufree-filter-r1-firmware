@@ -25,6 +25,7 @@
   esp-web-install-button button { background:var(--acc); color:#fff; border:0; border-radius:10px; padding:14px 34px; font:inherit; font-size:18px; font-weight:600; cursor:pointer; }
   esp-web-install-button button:hover { filter:brightness(1.08); }
   .msg { color:var(--warn); font-weight:600; }
+  esp-web-install-button:not(:defined) [slot=unsupported], esp-web-install-button:not(:defined) [slot=not-allowed] { display:none; }
   h2 { font-size:17px; margin:0 0 10px; }
   ol, ul { margin:0; padding-left:22px; }
   li { margin:6px 0; }
