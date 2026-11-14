@@ -1,8 +1,8 @@
 {
-  "version": "0.8.0-beta.1",
-  "url": "https://github.com/lufreecz/lufree-filter-r1-firmware/releases/download/v0.8.0-beta.1/lufree-filter-r1-0.8.0-beta.1.bin",
-  "size": 1703776,
-  "sha256": "21fffe5233d136483c483366f102a81a6d438f7765f5e738d7082ca11a7d46ab",
-  "notes": "NEW WIRING (v2) – install only after you have rewired the filter, or follow the steps below. Fans + I2C on the left header row of the SuperMini, display on the right row.",
+  "version": "0.8.0-beta.2",
+  "url": "https://github.com/lufreecz/lufree-filter-r1-firmware/releases/download/v0.8.0-beta.2/lufree-filter-r1-0.8.0-beta.2.bin",
+  "size": 1707792,
+  "sha256": "b3828fd3d53fc1082627a443f16b2be7b56fe7fd7dde61a4e2c2d8e531486973",
+  "notes": "Fixed fan speed reading: the tach inputs counted the PWM edges (readings like 1.5 million rpm). The tach lines are now sampled at 10 kHz and a pulse counts only when the level stays stable for 0.5 ms; readings above 15000 rpm are discarded.",
   "date": "2026-11-14"
 }
