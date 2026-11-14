@@ -1,8 +1,8 @@
 {
-  "version": "0.8.0-beta.4",
-  "url": "https://github.com/lufreecz/lufree-filter-r1-firmware/releases/download/v0.8.0-beta.4/lufree-filter-r1-0.8.0-beta.4.bin",
-  "size": 1709520,
-  "sha256": "57f19e854adffa448fd2a8644588affe93090a6b66af5b5682a14b3f8f2225a8",
-  "notes": "Tach reading tuned to the real signal: 20 kHz sampling, a level must hold for 0.15 ms (the tach low pulses at full speed are only ~0.2 ms) and counted pulses must be at least 1.5 ms apart. The log also shows a histogram of raw tach A pulse widths every 15 s.",
+  "version": "0.8.0-beta.5",
+  "url": "https://github.com/lufreecz/lufree-filter-r1-firmware/releases/download/v0.8.0-beta.5/lufree-filter-r1-0.8.0-beta.5.bin",
+  "size": 1708656,
+  "sha256": "3aa7b3b21edc3154ae47579dec39f6be9aed84242c4ce244e1efa38968d80c67",
+  "notes": "Cleanup before 0.8.0: test diagnostics removed (tach histogram, 15 s fan log), fan speeds added to the periodic [RUN] log line. Tach sampling lowered to 10 kHz (0.3 ms stable level, 1.5 ms minimum gap) – half the CPU load, verified signal is clean with a common ground.",
   "date": "2026-11-14"
 }
